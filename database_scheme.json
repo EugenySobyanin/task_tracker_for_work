@@ -1,0 +1,299 @@
+{
+  "tables": [
+    {
+      "id": 0,
+      "name": "workers",
+      "x": -541,
+      "y": -277.99999999999994,
+      "fields": [
+        {
+          "name": "id",
+          "type": "INT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": 0
+        },
+        {
+          "name": "first_name",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": 255
+        },
+        {
+          "name": "last_name",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 2,
+          "size": 255
+        },
+        {
+          "name": "position",
+          "type": "ENUM",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "Должность",
+          "id": 3,
+          "size": 255,
+          "values": [
+            "Начальник",
+            "Главный специалист",
+            "Ведущий инженер"
+          ]
+        },
+        {
+          "name": "is_superuser",
+          "type": "BOOLEAN",
+          "default": "False",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "Флаг супер-пользователя для доступа в админку и возможность изменять все данные",
+          "id": 4,
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "Работники отдела",
+      "indices": [],
+      "color": "#ffe159",
+      "key": 1780998252594
+    },
+    {
+      "id": 1,
+      "name": "tasks",
+      "x": 303,
+      "y": -306,
+      "fields": [
+        {
+          "name": "id",
+          "type": "INT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": 0
+        },
+        {
+          "name": "worker_id",
+          "type": "INT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "Работник, назначенный на задачу.\nНа одну задачу может быть назначено несколько сотрудников.",
+          "id": 1,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "creator",
+          "type": "INT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "Ссылка на работника.\nЗадачи может добавлять только начальник или сотрудник может назначать задачи самому себе.",
+          "id": 2,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "description",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "Описание задачи",
+          "id": 3,
+          "size": 65535,
+          "values": []
+        },
+        {
+          "name": "comment",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "Комментарий, примечание",
+          "id": 4,
+          "size": 65535,
+          "values": []
+        },
+        {
+          "name": "is_closed",
+          "type": "BOOLEAN",
+          "default": "False",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "Флаг, который отвечает за то, закрыта задача или нет",
+          "id": 5,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "deadline",
+          "type": "DATETIME",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "Крайний срок выполнения задач",
+          "id": 6,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "Дата и время создания задачи, автоматическое поле",
+          "id": 7,
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "Задачи",
+      "indices": [],
+      "color": "#3cde7d",
+      "key": 1780998933468
+    },
+    {
+      "id": 2,
+      "name": "tasks_workers",
+      "x": -100,
+      "y": -283,
+      "fields": [
+        {
+          "name": "id",
+          "type": "INT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": 0
+        },
+        {
+          "name": "worker_id",
+          "type": "INT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "task_id",
+          "type": "INT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 2,
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "Промежуточная таблица для N:M связи работников и задач",
+      "indices": [],
+      "color": "#175e7a",
+      "key": 1781012580421
+    }
+  ],
+  "relationships": [
+    {
+      "startTableId": 2,
+      "startFieldId": 1,
+      "endTableId": 0,
+      "endFieldId": 0,
+      "cardinality": "one_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "",
+      "id": 0
+    },
+    {
+      "startTableId": 2,
+      "startFieldId": 2,
+      "endTableId": 1,
+      "endFieldId": 0,
+      "cardinality": "one_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "",
+      "id": 1
+    }
+  ],
+  "notes": [
+    {
+      "id": 0,
+      "x": -310.00000000000006,
+      "y": 36,
+      "title": "Заметки",
+      "content": "1. Нужно ли обновление задач?\n2. Нужно ли подтверждение задач?\n3. Что если сотрудник создал себе задачу, а потом решил это не делать?\n4. Нужно ли сделать добавление файлов к задаче?",
+      "color": "#fcf7ac",
+      "height": 354
+    }
+  ],
+  "subjectAreas": [],
+  "database": "generic",
+  "types": [],
+  "title": "Untitled Diagram"
+}
